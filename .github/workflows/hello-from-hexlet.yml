@@ -1,3 +1,5 @@
+name: hello_from_hexlet
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -5,9 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: npm install
-      - run:
-          make setup
-          make start
+        with:
+          node-version: '18.x'
+
+      - run: make setup
       - run: make test
       - run: make lint
+      - uses: hexlet-components/hello-from-hexlet-action@release
